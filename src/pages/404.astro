@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localUrl } from '../lib/site';
+---
+
+<BaseLayout title="Página no encontrada" noindex>
+  <section class="not-found">
+    <p class="error-code">404</p>
+    <h1>Esta ruta no lleva a ninguna página.</h1>
+    <p>Comprueba la dirección o vuelve al inicio para consultar las prácticas.</p>
+    <a class="text-link" href={localUrl()}>Volver al inicio</a>
+  </section>
+</BaseLayout>

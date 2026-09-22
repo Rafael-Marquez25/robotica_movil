@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RobotDiagram from '../components/RobotDiagram.astro';
+import { publishedPracticas } from '../lib/practicas';
+import { formatDate, localUrl } from '../lib/site';
+
+const practicas = await publishedPracticas();
+---
+
+<BaseLayout>
+  <section class="hero" aria-labelledby="home-title">
+    <div class="hero-copy">
+      <h1 id="home-title">Robótica<br />Móvil<span class="title-period">.</span></h1>
+      <p class="hero-description">Blog de Prácticas.</p>
+      <a class="text-link" href="#practicas">Explorar las prácticas <span aria-hidden="true">↓</span></a>
+    </div>
+    <RobotDiagram />
+  </section>
+
+  <section id="practicas" class="practices-section" aria-labelledby="practicas-title">
+    <div class="section-heading">
+      <h2 id="practicas-title">Prácticas</h2>
+      <p></p>
+    </div>
+    {practicas.length ? (
+      <ol class="practice-list">
+        {practicas.map(({ id, data }) => (
+          <li class="practice-entry">
+            <time datetime={data.date.toISOString()}>{formatDate(data.date)}</time>
+            <div>
+              <h3><a href={localUrl(`practicas/${id}/`)}>{data.title}</a></h3>
+              <p>{data.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <div class="empty-state">
+        <svg width="44" height="48" viewBox="0 0 44 48" fill="none" aria-hidden="true">
+          <path d="M11 5h19l6 6v32H11V5Z" stroke="currentColor" stroke-width="1.5" />
+          <path d="M29 5v8h7M6 11v32m10-22h14m-14 7h14m-14 7h8" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+        <div>
+          <h3>Todavía no hay prácticas publicadas.</h3>
+          <p>Aquí irán los desarrollos, las pruebas y los resultados de la asignatura.</p>
+        </div>
+      </div>
+    )}
+  </section>
+</BaseLayout>

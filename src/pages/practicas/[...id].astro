@@ -1,0 +1,29 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { publishedPracticas } from '../../lib/practicas';
+import { formatDate, localUrl } from '../../lib/site';
+
+export async function getStaticPaths() {
+  return (await publishedPracticas()).map((entry) => ({
+    params: { id: entry.id }, props: { entry },
+  }));
+}
+
+interface Props { entry: CollectionEntry<'practicas'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <article class="article">
+    <a class="back-link" href={localUrl('#practicas')}>Volver a las prácticas</a>
+    <header class="article-header">
+      <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+    </header>
+    <div class="prose"><Content /></div>
+    <footer class="article-footer"><a href={localUrl('#practicas')}>Ver todas las prácticas</a></footer>
+  </article>
+</BaseLayout>

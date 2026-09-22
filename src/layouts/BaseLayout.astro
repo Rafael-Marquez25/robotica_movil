@@ -1,0 +1,52 @@
+---
+import '@fontsource/barlow/latin-400.css';
+import '@fontsource/barlow/latin-500.css';
+import '@fontsource/barlow/latin-600.css';
+import '@fontsource/barlow/latin-700.css';
+import '../styles/global.css';
+import { localUrl, site } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { title, description = site.description, noindex = false } = Astro.props;
+const pageTitle = title ? `${title} | ${site.title}` : `${site.title} | Blog de prácticas`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F5F8FC" />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href={localUrl('favicon.svg')} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header shell">
+      <a class="brand" href={localUrl()} aria-label="Robótica Móvil, inicio">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+          <rect x="7" y="6" width="16" height="20" rx="6" stroke="currentColor" stroke-width="1.7" />
+          <path d="M4 13v8m22-8v8M15 2v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="15" cy="15" r="3" fill="currentColor" />
+        </svg>
+        <span>Robótica Móvil</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a class="nav-link" href={localUrl('#practicas')}>Prácticas</a>
+      </nav>
+    </header>
+    <main id="contenido" class="shell" tabindex="-1"><slot /></main>
+    <footer class="site-footer shell">
+      <p>Rafael Márquez.</p>
+      <a href={site.repository}>Repositorio en GitHub <span aria-hidden="true">↗</span></a>
+    </footer>
+  </body>
+</html>

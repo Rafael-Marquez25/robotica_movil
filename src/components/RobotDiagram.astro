@@ -1,0 +1,50 @@
+<figure class="robot-diagram">
+  <svg viewBox="0 0 500 390" role="img" aria-labelledby="diagram-title diagram-description">
+    <title id="diagram-title">Trayectoria de un robot móvil</title>
+    <desc id="diagram-description">Ilustración de un robot con dos ruedas que recorre una trayectoria curva entre obstáculos. No representa datos de una práctica.</desc>
+    <defs>
+      <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+        <path d="M25 0H0V25" fill="none" stroke="#D4DFEB" stroke-width="0.7" />
+      </pattern>
+      <pattern id="obstacle-lines" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <path d="M0 0V7" stroke="#D4DFEB" stroke-width="2" />
+      </pattern>
+      <marker id="direction" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+        <path d="M1 1l4 2.5L1 6" fill="none" stroke="#2458A6" stroke-width="1.2" />
+      </marker>
+    </defs>
+    <rect x="25" y="15" width="450" height="350" rx="2" fill="url(#grid)" />
+    <path d="M25 35V15h20m410 0h20v20M25 345v20h20m410 0h20v-20" stroke="#2458A6" stroke-width="1.5" fill="none" />
+    <g fill="url(#obstacle-lines)" stroke="#A3B5CD" stroke-width="1.2">
+      <rect x="111" y="93" width="80" height="67" rx="3" />
+      <rect x="294" y="257" width="94" height="57" rx="3" />
+    </g>
+    <path d="M74 303C140 303 190 303 214 271S214 207 265 192S329 195 342 152" fill="none" stroke="#FFFFFF" stroke-width="8" />
+    <path d="M74 303C140 303 190 303 214 271S214 207 265 192S329 195 342 152" fill="none" stroke="#B65326" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="74" cy="303" r="6" fill="#F5F8FC" stroke="#B65326" stroke-width="2" />
+    <circle cx="214" cy="271" r="4" fill="#B65326" />
+    <path d="M350 108C355 77 381 61 422 61" fill="none" stroke="#2458A6" stroke-width="1.5" stroke-dasharray="5 6" />
+    <circle cx="427" cy="61" r="9" fill="#F5F8FC" stroke="#2458A6" stroke-width="1.5" />
+    <circle cx="427" cy="61" r="3" fill="#2458A6" />
+    <g transform="translate(344 133) rotate(12)">
+      <path d="M-57-12a60 60 0 0 1 114 0" fill="none" stroke="#2458A6" stroke-opacity="0.13" />
+      <path d="M-74-17a78 78 0 0 1 148 0" fill="none" stroke="#2458A6" stroke-opacity="0.1" />
+      <circle r="43" fill="#2458A6" fill-opacity="0.055" stroke="#2458A6" stroke-opacity="0.18" stroke-dasharray="3 5" />
+      <rect x="-33" y="-14" width="10" height="34" rx="3" fill="#203247" />
+      <rect x="23" y="-14" width="10" height="34" rx="3" fill="#203247" />
+      <rect x="-24" y="-29" width="48" height="61" rx="18" fill="#FFFFFF" stroke="#2458A6" stroke-width="2" />
+      <path d="M-12 18h24" stroke="#D4DFEB" stroke-width="2" />
+      <circle r="9" fill="#F5F8FC" stroke="#2458A6" stroke-width="1.5" />
+      <circle r="3" fill="#2458A6" />
+      <path d="M0-12v-38" stroke="#2458A6" stroke-width="1.5" marker-end="url(#direction)" />
+    </g>
+    <g fill="#203247" font-family="Barlow, sans-serif" font-size="13">
+      <text x="59" y="332">Inicio</text>
+      <text x="399" y="43">Destino</text>
+    </g>
+    <g transform="translate(52 55)" stroke="#A3B5CD" stroke-width="1.2" fill="none">
+      <path d="M0 25V0m0 25h25M-3 4l3-4 3 4m18 18 4 3-4 3" />
+    </g>
+  </svg>
+  <figcaption><span></span></figcaption>
+</figure>
