@@ -90,6 +90,8 @@ p { text-wrap: pretty; }
 .prose th { font-weight: 600; background: #e7eef7; }
 .prose td { background: var(--surface); }
 .prose img { display: block; border-radius: 4px; margin-inline: auto; }
+.prose video { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; }
+.prose figcaption { margin-top: 0.6em; color: var(--muted); font-size: 0.9em; }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin-block: 2em; }
 .article-footer { margin-top: 50px; border-top: 1px solid var(--line); padding-top: 25px; font-size: 17px; }
 .not-found { max-width: 650px; padding-block: 72px 96px; }
